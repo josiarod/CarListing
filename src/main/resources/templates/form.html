@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Food</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<nav th:replace="base :: navlinks"></nav>
+
+<header class="masthead"  style="background-image: url('img/food.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="title col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Add Food</h1>
+                    <span class="subheading">Scroll down to add a food item</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="row jumbotron">
+    <div class="col-md-6">
+        <h1>Add a Food Item</h1>
+        <hr>
+        <form method="POST" action="/add" th:object="${food}"
+              enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nameinput">Name</label>
+                <input id="nameinput"  class="form-control" type="text" th:field="*{user}" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+                <label for="foodinput">Food</label>
+                <input id="foodinput" class="form-control" type="text" th:field="*{foodName}" placeholder="Enter the name of the food item" />
+            </div>
+            <div class="form-group">
+                <label for="descinput">Description</label>
+                <input id="descinput" class="form-control" type="text" th:field="*{description}" placeholder="Enter a description for the food item"/>
+            </div>
+            <div class="form-group">
+                <input type="file" name="file" class="form-control-file"  /><br/><br/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <img class="img-fluid" src="/img/potluck.jpg" alt="potluck">
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

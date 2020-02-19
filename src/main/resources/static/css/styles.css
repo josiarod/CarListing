@@ -1,0 +1,143 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 20px;
+    color: #212529;
+    font-family: 'Lora', serif;
+}
+
+p {
+    line-height: 1.5;
+    margin: 30px 0;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+a {
+    color: #212529;
+}
+
+.section-heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 60px;
+}
+
+#mainNav {
+    position: absolute;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #fff;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: #343a40;
+}
+
+#mainNav .navbar-brand {
+    color: #343a40;
+    border: 2px solid #343a40;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#mainNav .navbar-nav > li.nav-item > a {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #343a40;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header.masthead {
+    background: no-repeat center center;
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    background-size: cover;
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header.masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.5;
+}
+
+header.masthead .site-heading {
+    padding: 200px 0 150px;
+    color: #fff;
+    text-align: center;
+}
+
+header.masthead .site-heading .subheading {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin: 10px 0 0;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+footer {
+    padding: 50px 0 65px;
+    background: #3D3C3C;
+}
+
+.copyright {
+    font-size: 14px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #fff;
+}
+
+@media only screen and (min-width: 992px) {
+    #mainNav {
+        border-bottom: 1px solid transparent;
+        background: transparent;
+    }
+
+    #mainNav .navbar-brand {
+        color: #fff;
+        border: 2px solid #fff;
+    }
+
+    #mainNav .navbar-nav > li.nav-item > a {
+        padding: 10px 20px;
+        color: #fff;
+    }
+
+    .title {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header.masthead {
+        height: 100vh;
+    }
+
+    .card-block {
+        padding: 10px;
+    }
+
+    .card-columns {
+        width: 60%;
+        margin: 0 auto
+    }
+}
