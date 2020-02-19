@@ -21,17 +21,15 @@ public class Food {
     @NotNull
     private String foodName;
 
-    public Food(String description, String pictureURL, String user, String foodName) {
+    public Food() {
+    }
+
+    public Food(@NotNull @Size(min = 5) String description, String pictureURL, @NotNull String user, @NotNull String foodName) {
         this.description = description;
         this.pictureURL = pictureURL;
         this.user = user;
         this.foodName = foodName;
     }
-
-    public Food() {
-    }
-
-
 
     public String getDescription() {
         return description;
