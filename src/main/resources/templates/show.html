@@ -9,7 +9,6 @@
 <body>
 <nav th:replace="base :: navlinks"></nav>
 
-
 <header class="masthead"  style="background-image: url('todo.jpg')">
     <div class="overlay"></div>
     <div class="container">
@@ -25,30 +24,24 @@
 </header>
 
 <div class="card-columns">
-    <div th:each="todo : ${todos}">
-        <div class="card">
-            <div class="card-block">
-                <div th:if="${todo.picture} != null">
-                    <img class="img-fluid" th:src="${todo.picture}" /><hr />
-                </div>
-
-                <div class="card-body">
-                    <h4 class="card-title" th:text="${todo.taskName}"></h4>
-                    <p class="card-text" th:text="${todo.description}"></p>
-                    <p class="card-text" th:text="${todo.priority}"></p>
-                    <p class="card-text" th:text="${todo.dueDate}"></p>
-                    <td>
-                    <a th:href="@{/update/{id}(id=${todo.id})}" >Update</a>
-                    <a th:href="@{/detail/{id}(id=${todo.id})}" >Details</a>
-                    <a th:href="@{/delete/{id}(id=${todo.id})}">Delete</a>
-                    </td></tr>
-
-            </div>
+<div class="card">
+    <div class="card-block">
+        <div th:if="${todo.picture} != null">
+            <img class="img-fluid" th:src="${todo.picture}" /><hr />
         </div>
+
+        <div class="card-body">
+            <h4 class="card-title" th:text="${todo.taskName}"></h4>
+            <p class="card-text" th:text="${todo.description}"></p>
+            <p class="card-text" th:text="${todo.priority}"></p>
+            <p class="card-text" th:text="${todo.dueDate}"></p>
+        </div>
+        <td>
+            <a th:href="@{/delete/{id}(id=${todo.id})}">Delete this item</a>
+        </td></tr>
     </div>
 </div>
 </div>
-
 
 <footer th:replace="base :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

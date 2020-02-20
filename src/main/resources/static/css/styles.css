@@ -154,4 +154,11 @@ footer {
         width: 60%;
         margin: 0 auto
     }
+
+    .delete{
+        color: blue;
+    }
+    .delete:hover{
+        color: red;
+    }
 }
