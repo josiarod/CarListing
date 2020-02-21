@@ -2,21 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Todo App</title>
+    <title>Job Board</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
 <nav th:replace="base :: navlinks"></nav>
 
-<header class="masthead"  style="background-image: url('todo.jpg')">
+
+<header class="masthead"  style="background-image: url('images.jfif')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="title col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Todo App</h1>
-                    <span class="subheading">Scroll down to see the todo list</span>
+                    <h1>Job Posting App</h1>
+                    <span class="subheading">Scroll down to see the jobs</span>
                 </div>
             </div>
         </div>
@@ -26,18 +27,20 @@
 <div class="card-columns">
 <div class="card">
     <div class="card-block">
-        <div th:if="${todo.picture} != null">
-            <img class="img-fluid" th:src="${todo.picture}" /><hr />
-        </div>
+
 
         <div class="card-body">
-            <h4 class="card-title" th:text="${todo.taskName}"></h4>
-            <p class="card-text" th:text="${todo.description}"></p>
-            <p class="card-text" th:text="${todo.priority}"></p>
-            <p class="card-text" th:text="${todo.dueDate}"></p>
+            <h4 class="card-title" th:text="${job.title}"></h4>
+            <p class="card-text" th:text="${job.description}"></p>
+            <p class="card-text" th:text="${job.postedDate}"></p>
+            <p class="card-text" th:text="${job.author}"></p>
+            <p class="card-text" th:text="${job.city}"></p>
+            <p class="card-text" th:text="${job.state}"></p>
+            <p class="card-text" th:text="${job.author}"></p>
+
         </div>
         <td>
-            <a th:href="@{/delete/{id}(id=${todo.id})}">Delete this item</a>
+            <a th:href="@{/delete/{id}(id=${job.id})}">Delete this item</a>
         </td></tr>
     </div>
 </div>

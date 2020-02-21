@@ -2,21 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Todo</title>
+    <title>Add a Job</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
 <nav th:replace="base :: navlinks"></nav>
 
-<header class="masthead"  style="background-image: url('todo.jpg')">
+<header class="masthead"  style="background-image: url('images.jfif')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="title col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Add Todo</h1>
-                    <span class="subheading">Scroll down to add a todo</span>
+                    <h1>Add a Job</h1>
+                    <span class="subheading">Scroll down to add a job</span>
                 </div>
             </div>
         </div>
@@ -25,41 +25,50 @@
 
 <div class="row jumbotron">
     <div class="col-md-6">
-        <h1>Add a Todo</h1>
+        <h1>Add a Job</h1>
         <hr>
-        <form method="POST" action="/add" th:object="${todo}"
+        <form method="POST" th:action="@{/process}" th:object="${job}"
               enctype="multipart/form-data">
             <div class="form-group">
-                <label for="nameinput">Task Name</label>
-                <input id="nameinput"  class="form-control" type="text" th:field="*{taskName}" placeholder="Enter the task name:" />
+                <label for="nameinput">Job Title</label>
+                <input id="nameinput"  class="form-control" type="text" th:field="*{title}" placeholder="Enter the task name:" />
             </div>
 
             <div class="form-group">
-                <label for="descinput">Description</label>
+                <label for="descinput">Job Description</label>
                 <input id="descinput" class="form-control" type="text" th:field="*{description}" placeholder="Enter a description for the todo: "/>
             </div>
 
             <div class="form-group">
-                <label for="descinput">Priority</label>
-                <input id="priorityinput" class="form-control" type="text" th:field="*{priority}" placeholder="Enter a priority for the todo: "/>
+                <label for="descinput">Posted Date</label>
+                <input id="priorityinput" class="form-control" type="text" th:field="*{postedDate}" placeholder="Enter a priority for the todo: "/>
             </div>
 
             <div class="form-group">
-                <label for="descinput">Due Date</label>
-                <input id="dueinput" class="form-control" type="text" th:field="*{dueDate}" placeholder="Enter a due date for the todo: "/>
+                <label for="descinput">Author</label>
+                <input id="authorinput" class="form-control" type="text" th:field="*{author}" placeholder="Enter a due date for the todo: "/>
             </div>
-
 
             <div class="form-group">
-                <input type="file" name="file" class="form-control-file"  /><br/><br/>
+                <label for="descinput">City</label>
+                <input id="cityinput" class="form-control" type="text" th:field="*{city}" placeholder="Enter a due date for the todo: "/>
             </div>
+
+            <div class="form-group">
+                <label for="descinput">State</label>
+                <input id="stateinput" class="form-control" type="text" th:field="*{state}" placeholder="Enter a due date for the todo: "/>
+            </div>
+
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <div class="col-md-6">
-        <img class="img-fluid" src="/img/images.jfif" alt="potluck">
-    </div>
+
+
+
 </div>
+
+
 
 <footer class="footer1">
     <div class="container">
