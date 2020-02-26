@@ -1,73 +1,60 @@
 package com.example.demo;
 
-import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.util.Map;
 
 
 @Controller
 public class HomeController {
+
     @Autowired
-    Repository repository;
+   CompanyRepository companyRepository;
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
 
     @RequestMapping("/")
-    public String listItems(Model model){
-        model.addAttribute("jobs", repository.findAll());
+    public String index(Model model){
+        model.addAttribute("employees", employeeRepository.findAll());
+        model.addAttribute("companies", companyRepository.findAll());
         return "index";
     }
 
-    @GetMapping("/add")
-    public String jobForm(Model model){
-        model.addAttribute("job", new Job());
-        return "form";
+    @GetMapping("/addCompany")
+    public String addCompany(Model model){
+        model.addAttribute("company", new Company());
+        return "companyform";
+    }
+
+    @PostMapping("/processCompany")
+    public String processCompany(@ModelAttribute Company company){
+       companyRepository.save(company);
+       return "redirect:/";
     }
 
 
+    @GetMapping("/addEmployee")
+    public String addEmployee(Model model) {
+        model.addAttribute("companies", companyRepository.findAll());
+        model.addAttribute("employee", new Employee());
+        return "employeeform";
+    }
 
-
-
-
-    @PostMapping("/process")
-    public String processForm(@Valid Job job, BindingResult result){
-        if (result.hasErrors()){
-            return "form";
-        }
-        repository.save(job);
+    @PostMapping("/processEmployee")
+    public String processEmployee(@ModelAttribute Employee employee) {
+        employeeRepository.save(employee);
         return "redirect:/";
     }
 
-    @RequestMapping("/detail/{id}")
-    public String showJob(@PathVariable("id") long id, Model model)
-    {
-        model.addAttribute("job", repository.findById(id).get());
-        return "show";
-    }
 
-    @RequestMapping("/update/{id}")
-    public String updateTodo(@PathVariable("id") long id,
-                             Model model){
-        model.addAttribute("job", repository.findById(id).get());
-        return "form";
-    }
 
-    @RequestMapping("/delete/{id}")
-    public String delJob(@PathVariable("id") long id){
-        repository.deleteById(id);
-        return "redirect:/";
-    }
 
-    @RequestMapping("/about")
-    public String about() {
-        return "about";
-    }
 
 }

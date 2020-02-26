@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Jobs Board</title>
+    <title>Companies</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
@@ -10,45 +10,53 @@
 <nav th:replace="base :: navlinks"></nav>
 
 
-<header class="masthead"  style="background-image: url('images.jfif')">
+<header class="masthead" style="background-image: url('img/office.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="title col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Job Posting App</h1>
-                    <span class="subheading">Scroll down to see the jobs list</span>
+                    <h1>Companies</h1>
+                    <span class="subheading">Scroll down to see the companies list</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<h2><a href="/addCompany">Add a Company</a></h2>
+<h2><a href="/addEmployee">Add a employee</a> </h2>
+<br>
+
+
+
+<h1 style="color: blueviolet">Companies list</h1>
 <div class="card-columns">
-    <div th:each="job : ${jobs}">
+    <div th:each="company : ${companies}">
         <div class="card">
             <div class="card-block">
 
                 <div class="card-body">
-                    <h4 class="card-title" th:text="${job.title}"></h4>
-                    <p class="card-text" th:text="${job.description}"></p>
-                    <p class="card-text" th:text="${job.postedDate}"></p>
-                    <p class="card-text" th:text="${job.author}"></p>
-                    <p class="card-text" th:text="${job.city}"></p>
-                    <p class="card-text" th:text="${job.state}"></p>
-                    <p class="card-text" th:text="${job.author}"></p>
+                    <h4 class="card-title" th:text="${company.companyName}"></h4>
 
-                    <td>
-                    <a th:href="@{/update/{id}(id=${job.id})}" >Update</a>
-                    <a th:href="@{/detail/{id}(id=${job.id})}" >Details</a>
-                    <a th:href="@{/delete/{id}(id=${job.id})}">Delete</a>
-                    </td></tr>
+                    <div th:each="employee: ${company.employees}">
 
+                     First Name:  <p class="card-text" th:text="${employee.employeeFirstName}"></p>
+                    Last Name: <p class="card-text" th:text="${employee.employeeLastName}"></p>
+                    Position: <p class="card-text" th:text="${employee.employeePosition}"></p>
+                    Salary: <p class="card-text" th:text="${employee.employeeSalary}"></p>
+                        <p style="color: blue">--------------------------------------</p>
+
+                    </div>
+
+                </div>
+
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
 
 
 <footer th:replace="base :: footer"></footer>
