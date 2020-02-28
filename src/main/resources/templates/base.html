@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Companies</title>
+    <title>Car Dealership</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
@@ -21,15 +21,30 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addCompany">Add Company</a>
+                    <a class="nav-link" href="/addCategory#addcategory">Add Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addEmployee">Add Employee</a>
+                    <a class="nav-link" href="/addCar#addcar">Add Car</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<header th:fragment="backgroundimage" class="masthead" style="background-image: url('img/car.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="title col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Car Dealership</h1>
+                    <span class="subheading">The Best Deals Every Day.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 
 <footer th:fragment="footer">
     <div class="container">

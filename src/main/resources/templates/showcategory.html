@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Car Dealership</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
@@ -12,32 +12,27 @@
 
 
 
-<h2><a href="/addCategory#addcategory" class="btn btn-info">Add a Category</a></h2>
-<h2><a href="/addCar#addcar" class="btn btn-info">Add a car</a> </h2>
-<br>
-
-
-<h1 style="color: blueviolet"><a href="#">Car Dealer</a></h1>
-
-
+<h1 style="color: blueviolet"><a href="/">Car Dealership</a></h1>
 <div class="card-columns">
-     <div th:each="category : ${categories}">
 
-         <div th:each="car: ${category.cars}">
-            <div class="card">
+
+        <div class="card">
             <div class="card-block">
+
                 <div class="card-body">
-                    <a th:href="@{/categorydetail/{id}(id=${category.id})}"  class="btn btn-success"> <h4 class="card-title" th:text="${category.categoryName}" ></h4> </a>
+                    <h4 class="card-title" th:text="${category.categoryName}"></h4>
+
+                    <div th:each="car: ${category.cars}">
+
+                        First Name:  <p class="card-text" th:text="${car.manufacturer}"></p>
+                        Last Name: <p class="card-text" th:text="${car.model}"></p>
+                        Position: <p class="card-text" th:text="${car.year}"></p>
+                        Salary: <p class="card-text" th:text="${car.MSRP}"></p>
 
 
-
-                        <strong>Manufacturer: </strong> <p class="card-text" th:text="${car.manufacturer}"></p>
-                        <strong>Model:</strong> <p class="card-text" th:text="${car.model}"></p>
-                            <strong> Year:</strong> <p class="card-text" th:text="${car.year}"></p>
-                                <strong>MSRP:</strong> <p class="card-text" th:text="${car.MSRP}"></p>
                         <td>
-                            <a th:href="@{/update/{id}(id=${car.id})}" class="btn btn-primary" >Update</a>
-                            <a th:href="@{/detail/{id}(id=${car.id})}" class="btn btn-primary" >Details</a>
+                            <a th:href="@{/update/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
+                            <a th:href="@{/detail/{id}(id=${car.id})}" class="btn btn-primary">Details</a>
                             <a th:href="@{/delete/{id}(id=${car.id})}" class="btn btn-primary">Delete</a>
                         </td></tr>
                         <p style="color: blue">--------------------------------------</p>
@@ -45,12 +40,12 @@
                     </div>
 
                 </div>
-            </div>
+
             </div>
         </div>
     </div>
 </div>
-
+</div>
 
 
 <footer th:replace="base :: footer"></footer>
