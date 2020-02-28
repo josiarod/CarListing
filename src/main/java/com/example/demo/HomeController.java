@@ -1,9 +1,14 @@
 package com.example.demo;
 
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -13,6 +18,9 @@ public class HomeController {
 
     @Autowired
     CarRepository carRepository;
+
+    @Autowired
+    CloudinaryConfig cloudc;
 
 
     @RequestMapping("/")
@@ -42,11 +50,52 @@ public class HomeController {
         return "carform";
     }
 
+//    @PostMapping("/processCar")
+//    public String processCar(@ModelAttribute Car car) {
+//        carRepository.save(car);
+//        return "redirect:/";
+//    }
+
+
+
+
+
+
+
+
+
     @PostMapping("/processCar")
-    public String processCar(@ModelAttribute Car car) {
+    public String processCar(@ModelAttribute Car car,
+                              @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            carRepository.save(car);
+            return "redirect:/";
+
+        }
+        try {
+            Map uploadResult = cloudc.upload(file.getBytes(),
+                    ObjectUtils.asMap("resourcetype", "auto"));
+            car.setPicture(uploadResult.get("url").toString());
+            carRepository.save(car);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "redirect:/processCar";
+        }
         carRepository.save(car);
         return "redirect:/";
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @RequestMapping("/detail/{id}")
@@ -58,7 +107,7 @@ public class HomeController {
 
     @RequestMapping("/update/{id}")
     public String updateCar(@PathVariable("id") long id,
-                             Model model){
+                             Model model   ){
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("car", carRepository.findById(id).get());
         return "carform";

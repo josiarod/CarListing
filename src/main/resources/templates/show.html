@@ -9,7 +9,7 @@
 <body>
 <nav th:replace="base :: navlinks"></nav>
 
-<header th:fragment="backgroundimage" class="masthead" style="background-image: url('img/car.jpg')">
+<header class="masthead" style="background-image: url('img/car.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -27,7 +27,9 @@
 <div class="card-columns">
     <div class="card">
         <div class="card-block">
-
+            <div th:if="${car.picture} != null">
+                <img class="img-fluid" th:src="${car.picture}" /><hr />
+            </div>
             <div class="card-body">
                 <h4 class="card-title" th:text="${car.manufacturer}"></h4>
                 <p class="card-text" th:text="${car.model}"></p>

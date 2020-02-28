@@ -19,6 +19,16 @@ public class Car {
     private String year;
     private  double MSRP;
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    private String picture;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id")

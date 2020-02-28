@@ -23,12 +23,16 @@
                     <h4 class="card-title" th:text="${category.categoryName}"></h4>
 
                     <div th:each="car: ${category.cars}">
+                        <div th:if="${car.picture} != null">
+                            <img class="img-fluid" th:src="${car.picture}" /><hr />
+                        </div>
 
+                         <div>
                         First Name:  <p class="card-text" th:text="${car.manufacturer}"></p>
                         Last Name: <p class="card-text" th:text="${car.model}"></p>
                         Position: <p class="card-text" th:text="${car.year}"></p>
                         Salary: <p class="card-text" th:text="${car.MSRP}"></p>
-
+                         </div>
 
                         <td>
                             <a th:href="@{/update/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
